@@ -1,41 +1,111 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class WheatUI : MonoBehaviour
 {
-    [SerializeField] WheatCollect _wheatScript;
-    [SerializeField] Image _wheatImage;
-    private float _currentTime;
-    private float _seconds;
-    private float _time;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private Image _wheatImage;
+    [SerializeField] private TextMeshProUGUI _wheatText;
+    [SerializeField] private Wallet _wallet;
+    [SerializeField] GameObject _spawnPeasantButton;
+    [SerializeField] private int _costAdd;
+    private int _calc;
+
+    public float maxSeconds = 15f;
+    private float _currentTimer;
+    
+
+
+
     void Start()
     {
-        
-        _seconds = _wheatScript._seconds;
-        _currentTime = _seconds;
 
+        _currentTimer = maxSeconds;
+        UpdateUI();
     }
 
-   
-
-    // Update is called once per frame
     void Update()
     {
-        _time = _seconds -= Time.deltaTime;
-        
-        _wheatImage.fillAmount = _seconds / _currentTime;
+        _wheatImage.fillAmount = _currentTimer / maxSeconds;
 
-        if(_seconds <= 0f)
+        if (_currentTimer <= 0f)
         {
-            WhealUpdate();
+            _wheatImage.fillAmount = 1f;
+            _currentTimer = maxSeconds;
+
+           
+        }
+
+        if (gameManager._wheatCount >= _wallet._peasantSpawnCost && !_spawnPeasantButton.activeInHierarchy)
+        {
+            _spawnPeasantButton.SetActive(true);
+        }
+
+        if (gameManager._wheatCount < _wallet._peasantSpawnCost)
+        {
+            _spawnPeasantButton.SetActive(false);
         }
     }
 
-    void WhealUpdate()
+    public void Init(float baseTime, float curTime)
     {
-        _wheatImage.fillAmount = 1f;
-        _seconds = _currentTime;
+        _currentTimer = curTime;
+        maxSeconds = baseTime;
+    }
+
+    public void UpdateCountWheat(int wheat)
+    {
+        _wheatText.text = wheat.ToString();
+    }
+
+    public void UpdateTimer(float time)
+    {
+        _currentTimer = time;
+    }
+
+    public void IsHasMoney()
+    {
+        while(_spawnPeasantButton.activeInHierarchy)
+        {
+  
+
+            if(gameManager._wheatCount >= _wallet._peasantSpawnCost)
+            {
+                _calc = gameManager._wheatCount -= _wallet._peasantSpawnCost;
+
+                _wallet._peasantSpawnCost += _costAdd;
+
+               
+                gameManager.SpawnWorker();
+
+
+                break;
+            }
+        }
+
+        
+        
+
+
+    }
+
+
+    private void UpdateUI()
+    {
+       
+        
+
+            _wheatText.text = _calc.ToString();
+
+
+
+
+
+
+
+        
     }
 }
