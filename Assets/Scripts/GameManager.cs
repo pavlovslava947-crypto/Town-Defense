@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WheatUI _wheatUI;
     [SerializeField] private PeasantSpawner _spawner;
+    [SerializeField] private WarriorSpawner _warSpawenr;
 
 
     public int _wheatCount = 0;
     private List<WheatCollect> _workers = new();
+    private List<WarriorAttack> _warriors = new();
 
     private void Start()
     {
@@ -48,6 +50,12 @@ public class GameManager : MonoBehaviour
     {
         WheatCollect worker = _spawner.Spawn();
         _workers.Add(worker);
+    }
+
+    public void SpawnWarrior()
+    {
+        WarriorAttack warrior = _warSpawenr.Spawn();
+        _warriors.Add(warrior);
     }
 
 }

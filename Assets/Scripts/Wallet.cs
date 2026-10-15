@@ -6,6 +6,7 @@ public class Wallet : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private WheatUI _wheatUI;
     public int _peasantSpawnCost = 5;
+    public int _warriorSpawnCost = 5;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,10 +23,17 @@ public class Wallet : MonoBehaviour
 
     public void OnSpawnPeasantButtonClick()
     {
-        //_peasantSpawnCost += 3;
+        _peasantSpawnCost += 3;
 
         _wheatUI.IsHasMoney();
 
         
+    }
+
+    public void OnSpawnWarriorButton()
+    {
+        _warriorSpawnCost += 3;
+
+        _wheatUI.IshasMoneyForWarrior();
     }
 }

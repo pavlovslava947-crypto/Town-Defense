@@ -11,12 +11,14 @@ public class WheatUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _wheatText;
     [SerializeField] private Wallet _wallet;
     [SerializeField] GameObject _spawnPeasantButton;
+    [SerializeField] private GameObject _spawnWarriorButton;
     [SerializeField] private int _costAdd;
     private int _calc;
+    private int _warriorCalc;
 
     public float maxSeconds = 15f;
     private float _currentTimer;
-    
+
 
 
 
@@ -36,7 +38,7 @@ public class WheatUI : MonoBehaviour
             _wheatImage.fillAmount = 1f;
             _currentTimer = maxSeconds;
 
-           
+
         }
 
         if (gameManager._wheatCount >= _wallet._peasantSpawnCost && !_spawnPeasantButton.activeInHierarchy)
@@ -68,17 +70,17 @@ public class WheatUI : MonoBehaviour
 
     public void IsHasMoney()
     {
-        while(_spawnPeasantButton.activeInHierarchy)
+        while (_spawnPeasantButton.activeInHierarchy)
         {
-  
 
-            if(gameManager._wheatCount >= _wallet._peasantSpawnCost)
+
+            if (gameManager._wheatCount >= _wallet._peasantSpawnCost)
             {
                 _calc = gameManager._wheatCount -= _wallet._peasantSpawnCost;
 
                 _wallet._peasantSpawnCost += _costAdd;
 
-               
+
                 gameManager.SpawnWorker();
 
 
@@ -87,25 +89,38 @@ public class WheatUI : MonoBehaviour
         }
 
         
-        
 
 
+
+    }
+
+    public void IshasMoneyForWarrior()
+    {
+        while (_spawnWarriorButton.activeInHierarchy)
+        {
+            if (gameManager._wheatCount >= _wallet._warriorSpawnCost)
+            {
+                _warriorCalc = gameManager._wheatCount -= _wallet._warriorSpawnCost;
+
+                gameManager.SpawnWarrior();
+            }
+        }
     }
 
 
     private void UpdateUI()
     {
-       
-        
-
-            _wheatText.text = _calc.ToString();
 
 
+
+        _wheatText.text = _calc.ToString();
 
 
 
 
 
-        
+
+
+
     }
 }
