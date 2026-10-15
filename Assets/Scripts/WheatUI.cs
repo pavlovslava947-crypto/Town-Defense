@@ -12,9 +12,12 @@ public class WheatUI : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] GameObject _spawnPeasantButton;
     [SerializeField] private GameObject _spawnWarriorButton;
-    [SerializeField] private int _costAdd;
-    private int _calc;
-    private int _warriorCalc;
+    [SerializeField] private TextMeshProUGUI _spawnPeasantCostText;
+    [SerializeField] private TextMeshProUGUI _spawnWarriorCostText;
+    public TextMeshProUGUI _uiHPtext;
+    [SerializeField] private WarriorAttack _warrior;
+    
+    
 
     public float maxSeconds = 15f;
     private float _currentTimer;
@@ -50,6 +53,16 @@ public class WheatUI : MonoBehaviour
         {
             _spawnPeasantButton.SetActive(false);
         }
+
+        if (gameManager._wheatCount >= _wallet._warriorSpawnCost && !_spawnWarriorButton.activeInHierarchy)
+        {
+            _spawnWarriorButton.SetActive(true);
+        }
+
+        if (gameManager._wheatCount < _wallet._warriorSpawnCost)
+        {
+            _spawnWarriorButton.SetActive(false);
+        }
     }
 
     public void Init(float baseTime, float curTime)
@@ -68,59 +81,13 @@ public class WheatUI : MonoBehaviour
         _currentTimer = time;
     }
 
-    public void IsHasMoney()
+
+    public void UpdateUI()
     {
-        while (_spawnPeasantButton.activeInHierarchy)
-        {
-
-
-            if (gameManager._wheatCount >= _wallet._peasantSpawnCost)
-            {
-                _calc = gameManager._wheatCount -= _wallet._peasantSpawnCost;
-
-                _wallet._peasantSpawnCost += _costAdd;
-
-
-                gameManager.SpawnWorker();
-
-
-                break;
-            }
-        }
-
-        
-
-
-
-    }
-
-    public void IshasMoneyForWarrior()
-    {
-        while (_spawnWarriorButton.activeInHierarchy)
-        {
-            if (gameManager._wheatCount >= _wallet._warriorSpawnCost)
-            {
-                _warriorCalc = gameManager._wheatCount -= _wallet._warriorSpawnCost;
-
-                gameManager.SpawnWarrior();
-            }
-        }
-    }
-
-
-    private void UpdateUI()
-    {
-
-
-
-        _wheatText.text = _calc.ToString();
-
-
-
-
-
-
-
+        _uiHPtext.text = _warrior._health.ToString("F1");
+        _wheatText.text = _wallet._calc.ToString();
+        _spawnWarriorCostText.text = _wallet._warriorSpawnCost.ToString();
+        _spawnPeasantCostText.text = _wallet._peasantSpawnCost.ToString();
 
     }
 }

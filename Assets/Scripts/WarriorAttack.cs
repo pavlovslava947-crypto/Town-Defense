@@ -63,7 +63,7 @@ public class WarriorAttack : MonoBehaviour
 
         if(_enemy._enemyHealth <= 0f)
         {
-            Debug.Log("die");
+           Debug.Log("die");
             _enemy.Die();
         }
         

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private WarriorAttack _warrior;
+    [SerializeField] WheatUI _wheatUI;
     [SerializeField] private float _damage = 2.5f;
     [SerializeField] private float _enemySpeed = 2.5f;
     public Animator _enemyAnim;
@@ -29,11 +30,13 @@ public class Enemy : MonoBehaviour
         if (_warrior._timer <= 0)
         {
             _warrior._health -= _damage;
+
+            _wheatUI.UpdateUI();
         }
 
         if(_warrior._health <= 0)
         {
-            _warrior.Die();
+           _warrior.Die();
         }
             
     }

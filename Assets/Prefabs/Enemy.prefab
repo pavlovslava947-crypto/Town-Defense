@@ -203,7 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df540b7d716dd6e4a89659a984a2ddce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  _warrior: {fileID: 0}
+  _warrior: {fileID: 6436778977282204145, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
+  _wheatUI: {fileID: 4784990019105907283, guid: b4597252aa33619499d0c5888409927d, type: 3}
   _damage: 5
   _enemySpeed: 2
   _enemyAnim: {fileID: 8405149759003039060}
