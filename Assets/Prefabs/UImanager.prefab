@@ -45,16 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5aa965270d0784b9fe0ee66e4dc93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheatUI
-  gameManager: {fileID: 0}
-  _wheatImage: {fileID: 0}
-  _wheatText: {fileID: 0}
-  _wallet: {fileID: 0}
-  _spawnPeasantButton: {fileID: 0}
-  _spawnWarriorButton: {fileID: 0}
-  _spawnPeasantCostText: {fileID: 0}
-  _spawnWarriorCostText: {fileID: 0}
-  _uiHPtext: {fileID: 0}
-  _warrior: {fileID: 0}
+  gameManager: {fileID: 3641107911006796923, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
+  _wheatImage: {fileID: 5407876002562256144, guid: dc67713e04b7d75419cfb5ec389fd58e, type: 3}
+  _wheatText: {fileID: 4441539814701279756, guid: e9bf2ade15a59be43a8c5b87178e6068, type: 3}
+  _wallet: {fileID: 8921199370963858562, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
+  _spawnPeasantButton: {fileID: 2260569490779797825, guid: 94f671619d43ed34a8eb5f3ac5ada4e3, type: 3}
+  _spawnWarriorButton: {fileID: 4040643930921166083, guid: 52c62f85dc429d74d95e2e716237420d, type: 3}
+  _spawnPeasantCostText: {fileID: 8262403903560855664, guid: 390088643641a1442b7d0eef50ab8424, type: 3}
+  _spawnWarriorCostText: {fileID: 2163639813033197980, guid: 601d2fde1d907e648960eb8aa2b5f568, type: 3}
+  _uiHPtext: {fileID: 4245195000679738531, guid: e3bd6055bc44c4442b4ef7bf4313d0ea, type: 3}
+  _warrior: {fileID: 6436778977282204145, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
   maxSeconds: 5
 --- !u!114 &7051402510225888589
 MonoBehaviour:
@@ -68,6 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03533243727741745a74af29bbc63619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthUI
-  _hpLine: {fileID: 0}
-  _warriorHP: {fileID: 0}
+  _hpLine: {fileID: 1367085690592187852, guid: 5b8f98ed7566a314ab2f6d589034a110, type: 3}
+  _warriorHP: {fileID: 6436778977282204145, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
   _maxHealth: 0

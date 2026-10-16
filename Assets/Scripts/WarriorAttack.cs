@@ -2,75 +2,92 @@ using UnityEngine;
 
 public class WarriorAttack : MonoBehaviour
 {
-    [SerializeField] Animator _attack;
+    private Animator _attack;
     public float _health = 100f;
     [SerializeField] private float _damage = 30f;
-    [SerializeField] private Enemy _enemy;
     [SerializeField] private float _seconds = 3f;
-    private float _currentTime;
+
+    public float _currentTime;
     public float _timer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private Enemy _currentTargetEnemy;
+
     void Start()
     {
         _currentTime = _seconds;
-        _timer = _seconds;
+        _timer = 0f; // Воин готов к бою сразу
         _attack = GetComponent<Animator>();
-        _attack.SetBool("isAttack" , false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(_timer  > 0)
+        if (_timer > 0)
         {
             _timer -= Time.deltaTime;
-            
         }
-       
+
+        // Воин бьет врага независимо в Update
+        if (_currentTargetEnemy != null && _timer <= 0)
+        {
+            Attack(_currentTargetEnemy);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            _attack.SetBool("isAttack" , true);
-
-            _enemy._enemyAnim.SetBool("isWalk" , true);
-
-            _enemy._move.x += 0f;
-
-            _enemy.EnemyAttack();
-            Attack();
+            Enemy currentEnemy = other.GetComponent<Enemy>();
+            if (currentEnemy != null && currentEnemy._enemyHealth > 0)
+            {
+                _currentTargetEnemy = currentEnemy;
+                if (_attack != null) _attack.SetBool("isAttack", true);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        _attack.SetBool("isAttack", false);
+        if (other.CompareTag("Enemy"))
+        {
+            _currentTargetEnemy = null;
+            if (_attack != null) _attack.SetBool("isAttack", false);
+        }
     }
 
-    void Attack()
+    void Attack(Enemy currentEnemy)
     {
-        
-
-        if(_timer <= 0)
+        if (currentEnemy._enemyHealth > 0)
         {
-            
-            _enemy._enemyHealth -= _damage;
+            currentEnemy._enemyHealth -= _damage;
+            Debug.Log($"⚔️ Воин ударил! У врага осталось: {currentEnemy._enemyHealth}");
+
             _timer = _currentTime;
-            Debug.Log(_enemy._enemyHealth);
-        }
 
-        if(_enemy._enemyHealth <= 0f)
-        {
-           Debug.Log("die");
-            _enemy.Die();
+            if (currentEnemy._enemyHealth <= 0f)
+            {
+                Debug.Log("💀 Враг умер, удаляем со сцены.");
+                currentEnemy.Die();
+                _currentTargetEnemy = null;
+                if (_attack != null) _attack.SetBool("isAttack", false);
+            }
         }
-        
+        else
+        {
+            _currentTargetEnemy = null;
+        }
     }
 
     public void Die()
     {
+        Debug.Log("Воин умер.");
+
+        GameManager gameManager = Object.FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.RemoveWarriorFromList(this);
+        }
+
         Destroy(gameObject, 0.5f);
     }
 }

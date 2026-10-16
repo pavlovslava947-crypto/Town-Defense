@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class HealthUI : MonoBehaviour
 {
     [SerializeField] private Image _hpLine;
     [SerializeField] private WarriorAttack _warriorHP;
+    [SerializeField] private TextMeshProUGUI _uiHPtext;
     public float _maxHealth;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,5 +20,12 @@ public class HealthUI : MonoBehaviour
     void Update()
     {
         _hpLine.fillAmount = _warriorHP._health / _maxHealth;
+    }
+
+    
+
+    public void UpdateUI(float currentHealth, float maxHealth)
+    {
+        _uiHPtext.text = _warriorHP._health.ToString("F1");
     }
 }

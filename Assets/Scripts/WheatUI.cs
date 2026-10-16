@@ -14,7 +14,6 @@ public class WheatUI : MonoBehaviour
     [SerializeField] private GameObject _spawnWarriorButton;
     [SerializeField] private TextMeshProUGUI _spawnPeasantCostText;
     [SerializeField] private TextMeshProUGUI _spawnWarriorCostText;
-    public TextMeshProUGUI _uiHPtext;
     [SerializeField] private WarriorAttack _warrior;
     
     
@@ -84,7 +83,7 @@ public class WheatUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        _uiHPtext.text = _warrior._health.ToString("F1");
+       
         _wheatText.text = _wallet._calc.ToString();
         _spawnWarriorCostText.text = _wallet._warriorSpawnCost.ToString();
         _spawnPeasantCostText.text = _wallet._peasantSpawnCost.ToString();
