@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Warrior
+  - Peasant
   layers:
   - Default
   - TransparentFX

@@ -12,19 +12,22 @@ public class HealthUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
         _maxHealth = _warriorHP._health;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         _hpLine.fillAmount = _warriorHP._health / _maxHealth;
+
+        UpdateUI();
     }
 
     
 
-    public void UpdateUI(float currentHealth, float maxHealth)
+    public void UpdateUI()
     {
         _uiHPtext.text = _warriorHP._health.ToString("F1");
     }

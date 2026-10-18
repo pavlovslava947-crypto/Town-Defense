@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WarriorSpawner _warSpawenr;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private HealthUI _healthUI;
+    [SerializeField] private EnemyTimerUI _enemyTimerUI;
+    public TextMeshProUGUI _enemyTimerText;
     public EnemyTimer _enemyTimer;
 
 
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
         _timer = _timeForRecources;
         _wheatUI.Init(_timeForRecources, _timer);
 
-        for(int i = 0; i < 1;  i++)
+        for (int i = 0; i < 1; i++)
         {
             SpawnWorker();
             SpawnEnemy();
@@ -49,25 +51,17 @@ public class GameManager : MonoBehaviour
             {
                 WarriorAttack activeWarrior = _warriors[lastIndex];
 
-                if (activeWarrior != null)
+
+
+                if (activeWarrior = null)
                 {
-                    _healthUI.UpdateUI(activeWarrior._health, 100f);
-                }
-                else
-                {
-                    // Если объект внутри списка стал null (уничтожен), аккуратно убираем его ячейку
                     _warriors.RemoveAt(lastIndex);
                 }
+               
+
             }
         }
-        else
-        {
-            // Если воинов вообще нет в списке — просто выводим 0 на полоску UI
-            if (_healthUI != null)
-            {
-                _healthUI.UpdateUI(0f, 100f);
-            }
-        }
+       
 
         // Сбор ресурсов рабочими
         if (_timer <= 0)
@@ -84,6 +78,8 @@ public class GameManager : MonoBehaviour
             _wheatCount += amount;
             _timer = _timeForRecources;
         }
+
+        _enemyTimerUI.UpdateUI(_enemyTimerText);
     }
 
 
@@ -112,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         if (_warriors.Contains(warrior))
         {
-            _warriors.Remove(warrior); 
+            _warriors.Remove(warrior);
         }
     }
 

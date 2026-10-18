@@ -1,13 +1,17 @@
 
+using System;
 using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private WheatUI _wheatUI;
+    
     public int _peasantSpawnCost = 0;
     public int _warriorSpawnCost = 0;
     public int _calc;
+    public int _wellFadWarriorCost = 5;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

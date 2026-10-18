@@ -4,7 +4,6 @@ using UnityEngine;
 public class EnemyTimerUI : MonoBehaviour
 {
     [SerializeField] private GameManager _gameManager;
-    [SerializeField] private TextMeshProUGUI _enemySpawnText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,8 +16,8 @@ public class EnemyTimerUI : MonoBehaviour
         
     }
 
-    public void UpdateUI()
+    public void UpdateUI(TextMeshProUGUI _enemySpawnText)
     {
-        _enemySpawnText.text = _gameManager._enemyTimer._timer.ToString("F1");
+        _enemySpawnText.text = "before the enemy spawns: " + _gameManager._enemyTimer._timer.ToString("F1");
     }
 }

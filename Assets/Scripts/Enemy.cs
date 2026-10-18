@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _damage = 2.5f;
     [SerializeField] private float _enemySpeed = 2.5f;
     [SerializeField] private float _timer = 3f;
+    [SerializeField] private PeasantHealth _peasantHealth;
 
     private float _currentTime;
     private WarriorAttack _targetWarrior; // Храним ссылку на воина, которого бьем
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     public Animator _enemyAnim;
     public Vector2 _move;
     public float _enemyHealth = 100f;
+    private bool _isNearPeasant = false;
 
     void Start()
     {
@@ -44,44 +46,79 @@ public class Enemy : MonoBehaviour
                 PerformAttack();
             }
         }
+
+
+        // Если воина перед нами нет — продолжаем идти влево
+       
+
+
+
+        else if (_isNearPeasant == true)
+        {
+            _move.x = 0f;
+            _enemyAnim.SetBool("isWalk", true);
+
+            if (_timer <= 0)
+            {
+                PeasantAttack();
+            }
+        }
         else
         {
-            // Если воина перед нами нет — продолжаем идти влево
             _move.x = -1f;
-            _enemyAnim.SetBool("isWalk", false); // Включаем анимацию ходьбы
+            _enemyAnim.SetBool("isWalk", false); 
             gameObject.transform.Translate(_move * Time.deltaTime * _enemySpeed);
         }
+
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Этот лог сработает ОДИН РАЗ, когда кто-то прикоснется к врагу
         Debug.LogWarning($"[ФИЗИКА ВРАГА]: В меня врезался объект: {other.gameObject.name} с тегом: {other.tag}");
+
+        if (other.CompareTag("Peasant"))
+        {
+            PeasantHealth peasant = other.GetComponent<PeasantHealth>();
+            _peasantHealth = peasant;
+            _isNearPeasant = true;
+        }
+
+
     }
 
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // Враг определяет воина по тегу (убедитесь, что у Воина стоит тег "Player")
+
+
         if (other.CompareTag("Warrior"))
         {
+            _move.x = 0f;
             WarriorAttack warrior = other.GetComponentInParent<WarriorAttack>();
             _enemyAnim.SetBool("isWalk", true); // Включаем анимацию ходьбы
             if (warrior != null && warrior._health > 0)
             {
                 _targetWarrior = warrior;
             }
-            else
-            {
-                Debug.LogError($"[ОШИБКА]: На объекте {other.gameObject.name} не найден скрипт WarriorAttack!");
-            }
+
+
+
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Warrior"))
         {
+            _move.x = -1f;
             _targetWarrior = null;
+        }
+
+        if (other.CompareTag("Peasant"))
+        {
+            _isNearPeasant = false;
         }
     }
 
@@ -105,6 +142,17 @@ public class Enemy : MonoBehaviour
         else
         {
             _targetWarrior = null;
+        }
+    }
+
+    void PeasantAttack()
+    {
+        _peasantHealth._health -= _damage;
+        _timer = _currentTime;
+
+        if (_peasantHealth._health <= 0)
+        {
+            _enemyAnim.SetBool("isWalk", false);
         }
     }
 

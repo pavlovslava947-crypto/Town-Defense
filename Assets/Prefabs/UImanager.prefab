@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1873439593832955760}
   - component: {fileID: 4784990019105907283}
-  - component: {fileID: 7051402510225888589}
   m_Layer: 0
   m_Name: UImanager
   m_TagString: Untagged
@@ -53,21 +52,5 @@ MonoBehaviour:
   _spawnWarriorButton: {fileID: 4040643930921166083, guid: 52c62f85dc429d74d95e2e716237420d, type: 3}
   _spawnPeasantCostText: {fileID: 8262403903560855664, guid: 390088643641a1442b7d0eef50ab8424, type: 3}
   _spawnWarriorCostText: {fileID: 2163639813033197980, guid: 601d2fde1d907e648960eb8aa2b5f568, type: 3}
-  _uiHPtext: {fileID: 4245195000679738531, guid: e3bd6055bc44c4442b4ef7bf4313d0ea, type: 3}
   _warrior: {fileID: 6436778977282204145, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
   maxSeconds: 5
---- !u!114 &7051402510225888589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6713930795232823935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03533243727741745a74af29bbc63619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthUI
-  _hpLine: {fileID: 1367085690592187852, guid: 5b8f98ed7566a314ab2f6d589034a110, type: 3}
-  _warriorHP: {fileID: 6436778977282204145, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
-  _maxHealth: 0

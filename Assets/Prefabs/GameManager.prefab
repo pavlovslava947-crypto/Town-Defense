@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PeasantSpawner
   _peasant: {fileID: 2253358248427333674, guid: 8821218348a834448a3c0d8bd8f88ae5, type: 3}
+  _peasantHealth: {fileID: 7912668655460173848, guid: 8821218348a834448a3c0d8bd8f88ae5, type: 3}
 --- !u!114 &3641107911006796923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +65,11 @@ MonoBehaviour:
   _wheatUI: {fileID: 4784990019105907283, guid: b4597252aa33619499d0c5888409927d, type: 3}
   _spawner: {fileID: 2560889514708488324}
   _warSpawenr: {fileID: 3469400907241405799, guid: ab439fa56009fab499e3cee548c81c12, type: 3}
+  _enemySpawner: {fileID: 0}
+  _healthUI: {fileID: 0}
+  _enemyTimerUI: {fileID: 0}
+  _enemyTimerText: {fileID: 0}
+  _enemyTimer: {fileID: 0}
   _wheatCount: 0
 --- !u!114 &8921199370963858562
 MonoBehaviour:
@@ -82,3 +88,4 @@ MonoBehaviour:
   _peasantSpawnCost: 5
   _warriorSpawnCost: 5
   _calc: 0
+  _wellFadWarriorCost: 20
