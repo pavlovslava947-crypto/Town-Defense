@@ -2,69 +2,100 @@ using UnityEngine;
 
 public class HungrySystem : MonoBehaviour
 {
-    [SerializeField] private WarriorAttack _warriorHealth;
-    [SerializeField] private GameManager _gameManager;
-    [SerializeField] private Wallet _wallet;
-   
-    public float _calldown = 35f;
+    private WarriorAttack _warriorHealth;
+    private GameManager _gameManager;
+    private Wallet _wallet;
+    private HungryScriptController _hungrySystemUI;
+
+    public float _calldown;
     [SerializeField] private float _hungryDamage = 15f;
-    [SerializeField] private float _timer = 3f;
-    [SerializeField] private float _currentTimer;
-    private float _currentTime;
-   
+    [SerializeField] private float _timer;
+    [SerializeField] private float _currentTimer = 3f;
+    [SerializeField] private float _currentTime = 35f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _currentTime = _calldown;
-        _currentTimer = _timer;
+        _warriorHealth = GetComponent<WarriorAttack>();
+
+
+        _gameManager = Object.FindAnyObjectByType<GameManager>();
+
+
+
+        _wallet = Object.FindAnyObjectByType<Wallet>();
+
+        _hungrySystemUI = Object.FindAnyObjectByType<HungryScriptController>();
+
+        _calldown = _currentTime;
+        _timer = _currentTimer;
         WarriorAttack warrior = _warriorHealth;
-        
+      
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        _calldown -= Time.deltaTime;
-        _timer -= Time.deltaTime;
-
-        if(_warriorHealth._health <= 0)
+        if(_calldown > 0)
         {
-            _warriorHealth.Die();
+            _calldown -= Time.deltaTime;
         }
 
-        if (_calldown <= 0)
+        else
         {
 
 
             HungryDamage();
-            
-            
+
+
 
         }
+
+       
+
+        if (_warriorHealth._health <= 0)
+        {
+            _warriorHealth.Die();
+        }
+        
+
+
     }
 
     public void WellFedWarrior()
     {
-        if (_gameManager._wheatCount >= _wallet._wellFadWarriorCost)
-        {
-            
-            _gameManager._wheatCount -= _wallet._wellFadWarriorCost;
-            _calldown = _currentTime;
-            Debug.Log("Выполнено");
-        }
+        _gameManager = Object.FindAnyObjectByType<GameManager>();
+        _wallet = Object.FindAnyObjectByType<Wallet>();
+        _warriorHealth = GetComponent<WarriorAttack>();
+        _hungrySystemUI = Object.FindAnyObjectByType<HungryScriptController>();
 
+
+        _gameManager._wheatCount -= _wallet._wellFadWarriorCost;
+
+        _timer = _currentTimer;
+        _calldown = _currentTime;
+        
+        _hungrySystemUI.UpdateUI();
+        Debug.Log("Выполнено");
        
+
+
+
 
     }
 
     void HungryDamage()
     {
-        if(_timer <= 0)
+        _timer -= Time.deltaTime;
+        if (_timer <= 0)
         {
             _warriorHealth._health -= _hungryDamage;
             _timer = _currentTimer;
         }
-       
+
+        
+
     }
 }

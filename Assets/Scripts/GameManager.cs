@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnWarrior()
     {
+      
         WarriorAttack warrior = _warSpawenr.Spawn();
         _warriors.Add(warrior);
     }

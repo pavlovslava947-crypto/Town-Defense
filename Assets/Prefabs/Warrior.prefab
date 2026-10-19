@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 760404969005430030}
   - component: {fileID: -4739534902274156126}
   - component: {fileID: -407010835476353872}
-  - component: {fileID: 3766307048303422624}
+  - component: {fileID: 5535428406127188636}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Warrior
@@ -605,14 +605,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac0767f285191d4ea6c67a3a3c65cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HungrySystem
-  _warriorHealth: {fileID: 6436778977282204145}
-  _gameManager: {fileID: 3641107911006796923, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
-  _wallet: {fileID: 8921199370963858562, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
   _calldown: 35
   _hungryDamage: 15
-  _timer: 3
+  _timer: 0
   _currentTimer: 0
---- !u!114 &3766307048303422624
+  _currentTime: 35
+--- !u!114 &5535428406127188636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -621,14 +619,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5152204879557040625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5a5a837009e2a48b405fab3109c683, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e5222e7d472cd4c8a7abc1c41ff6e4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HungrySystemUI
-  _hungryButton: {fileID: 3343237786459667772, guid: 2424222265bd42947b92896acabf5c55, type: 3}
-  _gameManager: {fileID: 3641107911006796923, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
-  _wallet: {fileID: 8921199370963858562, guid: 821d298ddc59e104da30ea1c0beba9f7, type: 3}
-  _hungrySystem: {fileID: -407010835476353872}
+  m_EditorClassIdentifier: Assembly-CSharp::HungryScriptController
   _hungryText: {fileID: 3897571967065689349}
+  _hungrySystem: {fileID: -407010835476353872}
 --- !u!1001 &8718541737077951959
 PrefabInstance:
   m_ObjectHideFlags: 0

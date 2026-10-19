@@ -26,6 +26,8 @@ public class WheatUI : MonoBehaviour
 
     void Start()
     {
+        gameManager = Object.FindAnyObjectByType<GameManager>();
+        _wallet = Object.FindAnyObjectByType<Wallet>();
 
         _currentTimer = maxSeconds;
         UpdateUI();
