@@ -76,7 +76,7 @@ public class HungrySystem : MonoBehaviour
 
         _timer = _currentTimer;
         _calldown = _currentTime;
-        
+        print($"Calldown: " + _calldown);
         _hungrySystemUI.UpdateUI();
         Debug.Log("Выполнено");
        

@@ -605,11 +605,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac0767f285191d4ea6c67a3a3c65cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HungrySystem
-  _calldown: 35
+  _calldown: 10
   _hungryDamage: 15
   _timer: 0
-  _currentTimer: 0
-  _currentTime: 35
+  _currentTimer: 3
+  _currentTime: 10
 --- !u!114 &5535428406127188636
 MonoBehaviour:
   m_ObjectHideFlags: 0

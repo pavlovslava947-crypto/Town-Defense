@@ -24,7 +24,7 @@ public class WarriorSpawner : MonoBehaviour
 
         _feedButton.onClick.RemoveAllListeners();
 
-        _feedButton.onClick.AddListener(_warrior.GetComponent<HungrySystem>().WellFedWarrior);
+        _feedButton.onClick.AddListener(warrior.GetComponent<HungrySystem>().WellFedWarrior);
         return warrior;
     }
 }
