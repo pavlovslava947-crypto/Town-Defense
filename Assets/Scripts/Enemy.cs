@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] WheatUI _wheatUI;
     [SerializeField] GameManager _gameManager;
-    [SerializeField] private float _damage = 2.5f;
+    public float _damage = 5f;
     [SerializeField] private float _enemySpeed = 2.5f;
     [SerializeField] private float _timer = 3f;
     [SerializeField] private PeasantHealth _peasantHealth;

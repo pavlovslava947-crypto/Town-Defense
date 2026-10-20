@@ -6,6 +6,7 @@ public class WarriorAttack : MonoBehaviour
     public float _health = 100f;
     [SerializeField] private float _damage = 30f;
     [SerializeField] private float _seconds = 3f;
+    [SerializeField] private WarriorSpawner _warriorSpawner;
 
     public float _currentTime;
     public float _timer;
@@ -14,6 +15,7 @@ public class WarriorAttack : MonoBehaviour
 
     void Start()
     {
+        _warriorSpawner = FindAnyObjectByType<WarriorSpawner>();
         _currentTime = _seconds;
         _timer = 0f; // Воин готов к бою сразу
         _attack = GetComponent<Animator>();
@@ -87,6 +89,8 @@ public class WarriorAttack : MonoBehaviour
         {
             gameManager.RemoveWarriorFromList(this);
         }
+
+        _warriorSpawner._warriorCount--;
 
         Destroy(gameObject, 0.5f);
     }

@@ -27,6 +27,6 @@ public class HungryScriptController : MonoBehaviour
 
     public void UpdateUI()
     {
-        _hungryText.text = "BEFORE WARRIOR HUNGRY: " + _hungrySystem._calldown.ToString("F0");
+        _hungryText.text = "HUNGRY: " + _hungrySystem._calldown.ToString("F0");
     }
 }

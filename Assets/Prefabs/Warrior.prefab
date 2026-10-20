@@ -548,6 +548,7 @@ MonoBehaviour:
   _health: 100
   _damage: 30
   _seconds: 3
+  _warriorSpawner: {fileID: 0}
   _currentTime: 0
   _timer: 0
 --- !u!50 &760404969005430030
@@ -609,7 +610,7 @@ MonoBehaviour:
   _hungryDamage: 15
   _timer: 0
   _currentTimer: 3
-  _currentTime: 10
+  _currentTime: 60
 --- !u!114 &5535428406127188636
 MonoBehaviour:
   m_ObjectHideFlags: 0

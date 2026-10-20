@@ -35,5 +35,29 @@ public class HungrySystemUI : MonoBehaviour
 
     }
 
-    
+    public void FeedAllWarriors()
+    {
+
+        HungrySystem[] allWarriors = Object.FindObjectsByType<HungrySystem>(FindObjectsSortMode.None);
+
+        foreach(HungrySystem warrior in allWarriors)
+        {
+            if (_gameManager._wheatCount >= _wallet._wellFadWarriorCost)
+            {
+                _gameManager._wheatCount -= _wallet._wellFadWarriorCost;
+                _wallet._wellFadWarriorCost = _wallet._wellFadWarriorCost + 5;
+                warrior.WellFedWarrior();
+            }
+
+            else
+            {
+                Debug.Log("Денег нет");
+            }
+           
+        }
+           
+    }
+
+
+
 }

@@ -253,13 +253,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _wheatUI: {fileID: 0}
   _gameManager: {fileID: 0}
-  _damage: 5
+  _damage: 25
   _enemySpeed: 2
   _timer: 3
   _peasantHealth: {fileID: 7912668655460173848, guid: 8821218348a834448a3c0d8bd8f88ae5, type: 3}
   _enemyAnim: {fileID: 8405149759003039060}
   _move: {x: 0, y: 0}
-  _enemyHealth: 170
+  _enemyHealth: 75
 --- !u!114 &4408728667314932226
 MonoBehaviour:
   m_ObjectHideFlags: 0

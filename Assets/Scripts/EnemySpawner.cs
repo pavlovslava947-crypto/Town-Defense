@@ -7,8 +7,11 @@ public class EnemySpawner : MonoBehaviour
    
     public Enemy Spawn()
     {
-        _enemy._enemyHealth = 70;
-        _enemy._enemyHealth += 5;
+        _enemy._enemyHealth = 70f;
+        _enemy._enemyHealth += 5f;
+        _enemy._damage = 20f;
+        _enemy._damage += 2f;
+
         Enemy enemy = Instantiate(_enemy);
         enemy.transform.position = _enemyPos;
         return enemy;
