@@ -1,21 +1,21 @@
-using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
-   
+    [SerializeField] private AudioSource _audioSource;
     private string _gamePlayScene = "SampleScene";
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
    
 
-    // Update is called once per frame
-    
 
     public void OnPlayyButtonClick()
     {
+        _audioSource.Play();
         SceneManager.LoadScene(_gamePlayScene);
+
+
 
     }
 }
