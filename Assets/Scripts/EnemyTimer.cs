@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyTimer : MonoBehaviour
 {
-    [SerializeField] private float _seconds = 30f;
+    public float _seconds = 30f;
     [SerializeField] private GameManager _gameManager;
     private float _currentTime;
     public float _timer;
