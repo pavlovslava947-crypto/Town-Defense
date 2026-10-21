@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _enemy._enemyHealth = 70f;
         _enemy._enemyHealth += 5f;
-        _enemy._damage = 20f;
+        _enemy._damage = 10f;
         _enemy._damage += 2f;
 
         Enemy enemy = Instantiate(_enemy);

@@ -610,7 +610,7 @@ MonoBehaviour:
   _hungryDamage: 15
   _timer: 0
   _currentTimer: 3
-  _currentTime: 60
+  _currentTime: 40
 --- !u!114 &5535428406127188636
 MonoBehaviour:
   m_ObjectHideFlags: 0

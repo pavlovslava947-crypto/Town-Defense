@@ -7,6 +7,9 @@ public class WinSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _winText;
     private string _gamePlayScene = "SampleScene";
     private string _mainMenuScene = "MainMenu";
+    [SerializeField] private GameObject _firstStar;
+    [SerializeField] private GameObject _secondStar;
+    [SerializeField] private GameObject _thirdStar;
 
     private float _gameScoreTimer = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +28,7 @@ public class WinSystem : MonoBehaviour
         {
             _winPanel.SetActive(true);
             Time.timeScale = 0f;
+            StarScoreCalculate();
             _winText.text = "the score for this game: " + _gameScoreTimer.ToString("F0");
         }
         
@@ -42,5 +46,35 @@ public class WinSystem : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    void StarScoreCalculate()
+    {
+        if(_gameScoreTimer <= 20f)
+        {
+            _firstStar.SetActive(true);
+            _secondStar.SetActive(true);
+            _thirdStar.SetActive(true);
+        }
+
+        if(_gameScoreTimer >= 100f)
+        {
+            _firstStar.SetActive(true);
+            _secondStar.SetActive(true);
+            _thirdStar.SetActive(false);
+        }
+
+        if(_gameScoreTimer >= 200f)
+        {
+            _firstStar.SetActive(true);
+            _secondStar.SetActive(false);
+            _thirdStar.SetActive(false);
+        }
+
+        else if( _gameScoreTimer > 1000f)
+        {
+            _firstStar.SetActive(false);
+            _secondStar.SetActive(false);
+            _thirdStar.SetActive(false);
+        }
+    }
     
 }
